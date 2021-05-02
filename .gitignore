@@ -1,0 +1,8 @@
+*.mp3
+songs.txt
+__pycache__
+gitautomation.py
+randomUsrAgent.txt
+.google-cookie
+dist/
+pydownsongs.egg-info
