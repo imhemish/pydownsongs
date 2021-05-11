@@ -34,8 +34,9 @@ def download(songname, qualitylevel):
 			requiredhrefstopstring = (int(myrequirement.find('" onclick="ads()"')))
 			finallink = (myrequirement[int(requiredhrefstartstring):int(requiredhrefstopstring)])
 			print("Downloading " + finallink + " as "+inputquery.title()+".mp3")
+			randmousrheaders = {"User-Agent": pydownsongs.others.randomUsrAgent()}
 			with open((inputquery.title()+".mp3"), "ab") as downloadfile:
-				r = requests.get(finallink, allow_redirects=True)
+				r = requests.get(finallink, allow_redirects=True, headers=randmomusrheaders)
 				downloadfile.write(r.content)
 			break
 		except Exception as e:

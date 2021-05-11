@@ -9,10 +9,10 @@ import time
 # Random User Agent ------------------
 def randomUsrAgent():
 	try:
-		if not os.path.exists("randomUsrAgent.txt"):
+		if not os.path.exists(os.path.join(os.path.expanduser("~"), "randomUsrAgent.txt")):
 		    getreq = requests.get("https://raw.githubusercontent.com/tamimibrahim17/List-of-user-agents/master/Chrome.txt")
 		    uastrings = getreq.text
-		    with open("randomUsrAgent.txt", "w")  as file:
+		    with open((os.path.join(os.path.expanduser("~"), "randomUsrAgent.txt")), "w")  as file:
 		    	file.write("\n".join((uastrings.split("\n")[2:])))
 		else:
 			uastrings = open("randomUsrAgent.txt", "r").read().split("\n")[2:]
