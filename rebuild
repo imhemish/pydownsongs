@@ -1,0 +1,2 @@
+rm build/ pydownsongs.egg-info/ dist/ -r
+sudo python setup.py install

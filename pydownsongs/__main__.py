@@ -4,6 +4,7 @@ import pydownsongs
 import time
 
 def main():
+	pydownsongs.createDirIfNotExists(os.path.join(os.path.expanduser("~"), ".cache"))
 	try:
 		args = sys.argv[1:]
 	except:

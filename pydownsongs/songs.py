@@ -38,6 +38,7 @@ def download(songname, qualitylevel):
 			with open((inputquery.title()+".mp3"), "ab") as downloadfile:
 				r = requests.get(finallink, allow_redirects=True, headers=randusrheaders)
 				downloadfile.write(r.content)
+			pydownsongs.add_meta(pydownsongs.get_meta(inputquery.title()), (inputquery.title()+".mp3"))
 			break
 		except Exception as e:
 			print("Some error occured")
