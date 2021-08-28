@@ -37,6 +37,22 @@ Example:
 ```bash
 pydownsongs -f songs.txt 4
 ```   
+- by using the spotify playlist directly in command line:  
+You can download the tracks of a spotify playlist directly by providing a link of playlist and then the quality level like this:  
+```bash  
+pydownsongs -s <link> <qualitynumber>
+```  
+Example:   
+```bash
+pydownsongs -s https://open.spotify.com/playlist/7KMTl7JzxUt5pRaOu77Omu?si=722aaaa6a18d41e0 4
+```
+But, for this to work, you have to create your spotify developer id and secrets at [developer.spotify.com](https://developer.spotify.com) and then add both these in following format in a file named pydownsongs.toml in the following format:   
+```toml
+id = '<youridhere>'
+secrets = '<yoursecretpasswordhere>'
+```   
+This file has to be placed in the following location: ~/.config/pydownsongs.toml (on GNU/Linux)  
+C:\Users\\<yourusername>\.config\pydownsongs.toml (on windows)   
 - by calling download function in through a python program:   
 ```python
 import pydownsongs

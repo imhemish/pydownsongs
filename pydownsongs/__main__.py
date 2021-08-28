@@ -56,7 +56,25 @@ def main():
 				iterationNo += 1
 			file.close()
 
+
+		# spotify play list ----------------------------
+		elif args[0] == "-s":
+			link = args[1]
+			try:
+				quality = args[2]
+			except:
+				print("Invalid Usage")
+				sys.exit()
+			if quality.isnumeric() == False:
+				print("Invalid usage")
+				sys.exit()
+			quality = int(quality)
+			pydownsongs.checkInternet()
+			pydownsongs.dl_spotlist(link, quality)
+
+			# ---------------------------------------
 		else:
+			# direct command usage ---------------------
 			if str(args[-1]).isnumeric() == False:
 				print("Quality level not supplied")
 				print("Try:")
@@ -66,6 +84,7 @@ def main():
 				quality = int(args[-1])
 				pydownsongs.checkInternet()
 				pydownsongs.downloadarray(arr, quality)
+			# ---------------------------------------
 	else:
 		print("Invalid Usage")
 
