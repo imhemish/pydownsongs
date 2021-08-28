@@ -81,3 +81,6 @@ Make sure that you have active Internet Connection otherwise the script would sh
 
 # Disclaimer
 This script does not promote the downloading of copyright content. This is solely for educational purposes for learning web scrapping by python. I am not responsible for any piracy.
+
+# Credits
+Special thanks to Swayam Gagneja (swayamgagneja12345@gmail.com) for providing base for spotify playlist file to which I made subsequent changes and linked to main file
