@@ -5,6 +5,7 @@ import os
 import googlesearch # pip install google
 import sys
 import time
+import pydownsongs
 
 # Create directory if doesn't exist ---
 def createDirIfNotExists(path):
@@ -59,3 +60,11 @@ def gSearch(term):
 	searchreq = list(googlesearch.search(term, stop=10, num=10, user_agent=(str(randomUsrAgent()))))
 	return searchreq
 # -------------------------------------
+
+# Download function made for modular functions (optional)
+def download_function(finallink, inputquery):
+	print("Downloading " + finallink + " as "+inputquery.title()+".mp3")
+	randusrheaders = {"User-Agent": pydownsongs.others.randomUsrAgent()}
+	with open((inputquery.title()+".mp3"), "ab") as downloadfile:
+		r = requests.get(finallink, allow_redirects=True, headers=randusrheaders)
+		downloadfile.write(r.content)

@@ -18,27 +18,17 @@ def download(songname, qualitylevel):
 				listoflinks.pop(0)
 			print(inputquery)
 			print(linkofsong)
-			apisite = "https://y1.youtube-to-mp3.org/searchdl.php"
-			payload = {"url": linkofsong,
-			"type": "mp3"}
-			postrequest = requests.post(apisite, data = payload)
-			responsehtml = postrequest.text
-			bs = bs4.BeautifulSoup(responsehtml, 'html.parser')
-			table = bs.find(lambda tag: tag.name=='table' and tag.has_attr('id') and tag['id']=="tab_mp3") 
-			rows = table.findAll(lambda tag: tag.name=='tr')
-			for y in [1,2,3,4,5]:
-			    if str(y) == str(qualitylevel):
-			        myrequirement = str(rows[y])
-			hrefstring = myrequirement.find('href="')
-			requiredhrefstartstring = str((int(hrefstring) + 6))
-			requiredhrefstopstring = (int(myrequirement.find('" onclick="ads()"')))
-			finallink = (myrequirement[int(requiredhrefstartstring):int(requiredhrefstopstring)])
-			print("Downloading " + finallink + " as "+inputquery.title()+".mp3")
-			randusrheaders = {"User-Agent": pydownsongs.others.randomUsrAgent()}
-			with open((inputquery.title()+".mp3"), "ab") as downloadfile:
-				r = requests.get(finallink, allow_redirects=True, headers=randusrheaders)
-				downloadfile.write(r.content)
+
+			# Modules reside in modules directory ------
+			print("Transferring control to youtube_dl")
+			from pydownsongs.modules.youtube_dl_module import download_module
+			download_module(linkofsong, inputquery, qualitylevel)
+			# -------------------------
+
+			# Adding metadata -------------------
 			pydownsongs.add_meta(pydownsongs.get_meta(inputquery.title()), (inputquery.title()+".mp3"))
+			# ----------------
+			
 			break
 		except Exception as e:
 			print("Some error occured")

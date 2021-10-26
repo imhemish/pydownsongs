@@ -83,7 +83,7 @@ def main():
 				arr = args[:-1]
 				quality = int(args[-1])
 				pydownsongs.checkInternet()
-				pydownsongs.downloadarray(arr, quality)
+				pydownsongs.songs.downloadarray(arr, quality)
 			# ---------------------------------------
 	else:
 		print("Invalid Usage")
