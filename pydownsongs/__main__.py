@@ -2,6 +2,7 @@ import sys
 import os
 import pydownsongs
 import time
+from toml import dump
 
 def main():
 	pydownsongs.createDirIfNotExists(os.path.join(os.path.expanduser("~"), ".cache"))
@@ -59,6 +60,12 @@ def main():
 
 		# spotify play list ----------------------------
 		elif args[0] == "-s":
+            template_config = {"id": "88e3af16edeb45cea4fad8cc6f2fa72e", "secrets": "b5bee31268b54f4a810b102ca4711f59"}
+            from os import mkdir
+            if not exists(exp("~/.config/pydownsongs.toml")):
+                filenew = open(exp("~/.config/pydownsongs.toml"), "a")
+                dump(template_config, filenew)
+                filenew.close()
 			link = args[1]
 			try:
 				quality = args[2]
