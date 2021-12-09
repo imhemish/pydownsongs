@@ -1,0 +1,113 @@
+	<h1>pydownsongs</h1>
+
+	<p>Pydownsongs is intended for both developers and regular users to download songs</p>
+
+	<h1>Installation</h1>
+
+	<p>Install by typing the following in <span class="caps">CMD</span>/PowerShell (Windows):</p>
+
+<pre lang="bash"><code lang="bash">python -m pip install pydownsongs</code></pre>
+
+	<p>For Mac/Linux/Termux, type the following in Terminal:</p>
+
+<pre lang="bash"><code lang="bash">python3 -m pip install pydownsongs</code></pre>
+
+	<p>You also need to install <span class="caps">FFMPEG</span> for this program to work. See the instructions below:</p>
+
+	<p>For windows, download the release-essential build from <a href="https://www.gyan.dev/ffmpeg/builds/">here</a><br />
+On Debian based <span class="caps">GNU</span>/Linux distros, use <code>sudo apt install ffmpeg</code><br />
+On RedHat based <span class="caps">GNU</span>/Linux distros, use <code>sudo dnf install ffmpeg</code><br />
+On Arch based <span class="caps">GNU</span>/Linux distros, use <code>sudo pacman -S ffmpeg</code><br />
+On Alpine Linux, use <code>sudo apt add ffmpeg</code><br />
+On Termux, use <code>pkg install ffmpeg</code> on updated Termux (dont use Play Store version as it is not updated there now, download from <a href="http://f-droid.org/en/packages/com.termux/">Termux on F-droid</a></p>
+
+	<p><strong>Note:</strong> The script requires Python3 and is not supported for Python2</p>
+
+	<h1>Usage</h1>
+
+	<p>Refer to these quality levels first:<br />
+1: Very High<br />
+2: High<br />
+3: Medium<br />
+4: Low<br />
+5: Very Low</p>
+
+	<p>Pydownsongs can be used in following ways:
+	<ul>
+		<li>directly through command line:<br />
+Give the list of songs directly in command line followed by quality level number</li>
+	</ul></p>
+
+<pre lang="bash"><code lang="bash">pydownsongs &lt;song1&gt; &lt;song2&gt; .... &lt;qualitynumber&gt;</code></pre>
+
+	<p>Example:</p>
+
+<pre lang="bash"><code lang="bash">pydownsongs &quot;Deathbed powfu&quot; 3</code></pre>
+
+	<ul>
+		<li>by using the file method directly in command line:<br />
+You can store the name of songs in a text file and can download songs using command like this:</li>
+	</ul>
+
+<pre lang="bash"><code lang="bash">pydownsongs -f &lt;filename&gt; &lt;qualitynumber&gt;</code></pre>
+
+	<p>Example:</p>
+
+<pre lang="bash"><code lang="bash">pydownsongs -f songs.txt 4</code></pre>
+
+	<ul>
+		<li>by using the spotify playlist directly in command line:<br />
+You can download the tracks of a spotify playlist directly by providing a link of playlist and then the quality level like this:</li>
+	</ul>
+
+<pre lang="bash"><code lang="bash">pydownsongs -s &quot;&lt;link&gt;&quot; &lt;qualitynumber&gt;</code></pre>
+
+	<p>Example:</p>
+
+<pre lang="bash"><code lang="bash">pydownsongs -s &quot;https://open.spotify.com/playlist/7JCHSdzXFRctCkbGnpH7Yw?si=82e6eacaaea14985&quot; 4</code></pre>
+
+	<p>But, for this to work, you have to create your spotify developer id and secrets at <a href="https://developer.spotify.com">developer.spotify.com</a> and then add both these in following format in a file named pydownsongs.toml in the following format:   </p>
+
+<pre lang="toml"><code lang="toml">id = &#39;&lt;youridhere&gt;&#39;
+secrets = &#39;&lt;yoursecretpasswordhere&gt;&#39;</code></pre>
+
+	<p>This file has to be placed in the following location: <code>~/.config/pydownsongs.toml</code> (on <span class="caps">GNU</span>/Linux)<br />
+<code>C:\Users\&lt;yourusername&gt;\.config\pydownsongs.toml</code> (on windows)</p>
+
+	<ul>
+		<li>by calling download function in through a python program:</li>
+	</ul>
+
+<pre lang="python"><code lang="python">import pydownsongs
+pydownsongs.download(songname, qualitylevel)</code></pre>
+
+	<p>Example:</p>
+
+<pre lang="python"><code lang="python">import pydownsongs
+pydownsongs.download(&quot;Sira E Hou Nimrat, Amrit&quot;, 2)</code></pre>
+
+	<ul>
+		<li>by calling downloadarray function through python program:<br />
+This function can be called to download a list of songs</li>
+	</ul>
+
+<pre lang="python"><code lang="python">arr = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]
+pydownsongs.downloadarray(arr, 4)</code></pre>
+
+	<p>Example:</p>
+
+<pre lang="python"><code lang="python">arr = [&quot;Something Just Like This&quot;, &quot;Pinjra Jasmine Sandlas&quot;]
+pydownsongs.downloadarray(arr, 4)</code></pre>
+
+	<h1>Notes</h1>
+
+	<p>(I assume that the songs rank top on youtube when given the names that you have mentioned in the list. If there may be duplicate songs, consider writing keywords with songname like if you want to search the song Closer, you may type &#8220;Closer chainsmokers&#8221;.)<br />
+Make sure that you have active Internet Connection otherwise the script would show you &#8220;No Internet Connection&#8221; and would exit itself. If any song(s) could not be downloaded by the script it would show &#8220;Some error occured&#8221; after the song and the name of that song would be copied to failedtemp.txt (this file would be created in the folder in which you are running the script if there are any fails).</p>
+
+	<h1>Disclaimer</h1>
+
+	<p>This script does not promote the downloading of copyright content. This is solely for educational purposes for learning web scrapping by python. I am not responsible for any piracy.</p>
+
+	<h1>Credits</h1>
+
+	<p>Special thanks to Swayam Gagneja (swayamgagneja12345@gmail.com) for providing base for spotify playlist file to which I made subsequent changes and linked to main file.</p>

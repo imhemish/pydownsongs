@@ -1,0 +1,103 @@
+h1. pydownsongs
+
+Pydownsongs is intended for both developers and regular users to download songs
+
+h1. Installation
+
+Install by typing the following in CMD/PowerShell (Windows):
+
+bc[bash]. python -m pip install pydownsongs
+
+For Mac/Linux/Termux, type the following in Terminal:
+
+bc[bash]. python3 -m pip install pydownsongs
+
+You also need to install FFMPEG for this program to work. See the instructions below:
+
+For windows, download the release-essential build from "here":https://www.gyan.dev/ffmpeg/builds/
+On Debian based GNU/Linux distros, use @sudo apt install ffmpeg@
+On RedHat based GNU/Linux distros, use @sudo dnf install ffmpeg@
+On Arch based GNU/Linux distros, use @sudo pacman -S ffmpeg@
+On Alpine Linux, use @sudo apt add ffmpeg@
+On Termux, use @pkg install ffmpeg@ on updated Termux (dont use Play Store version as it is not updated there now, download from "Termux on F-droid":http://f-droid.org/en/packages/com.termux/
+
+*Note:* The script requires Python3 and is not supported for Python2
+
+h1. Usage
+
+Refer to these quality levels first:
+1: Very High
+2: High
+3: Medium
+4: Low
+5: Very Low
+
+Pydownsongs can be used in following ways:
+* directly through command line:
+Give the list of songs directly in command line followed by quality level number 
+
+bc[bash]. pydownsongs <song1> <song2> .... <qualitynumber>
+
+Example:
+
+bc[bash]. pydownsongs "Deathbed powfu" 3
+
+* by using the file method directly in command line:
+You can store the name of songs in a text file and can download songs using command like this:
+
+bc[bash]. pydownsongs -f <filename> <qualitynumber>
+
+Example:
+
+bc[bash]. pydownsongs -f songs.txt 4
+ 
+* by using the spotify playlist directly in command line:
+You can download the tracks of a spotify playlist directly by providing a link of playlist and then the quality level like this:
+
+bc[bash]. pydownsongs -s "<link>" <qualitynumber>
+
+Example:
+
+bc[bash]. pydownsongs -s "https://open.spotify.com/playlist/7JCHSdzXFRctCkbGnpH7Yw?si=82e6eacaaea14985" 4
+
+But, for this to work, you have to create your spotify developer id and secrets at "developer.spotify.com":https://developer.spotify.com and then add both these in following format in a file named pydownsongs.toml in the following format:   
+
+bc[toml]. id = '<youridhere>'
+secrets = '<yoursecretpasswordhere>'
+
+This file has to be placed in the following location: @~/.config/pydownsongs.toml@ (on GNU/Linux)
+@C:\Users\<yourusername>\.config\pydownsongs.toml@ (on windows)
+
+* by calling download function in through a python program:
+
+bc[python]. import pydownsongs
+pydownsongs.download(songname, qualitylevel)
+
+Example:
+
+bc[python]. import pydownsongs
+pydownsongs.download("Sira E Hou Nimrat, Amrit", 2)
+
+* by calling downloadarray function through python program:
+This function can be called to download a list of songs
+
+bc[python]. arr = ["a", "b", "c"]
+pydownsongs.downloadarray(arr, 4)
+
+Example:
+
+bc[python]. arr = ["Something Just Like This", "Pinjra Jasmine Sandlas"]
+pydownsongs.downloadarray(arr, 4)
+
+h1. Notes
+
+(I assume that the songs rank top on youtube when given the names that you have mentioned in the list. If there may be duplicate songs, consider writing keywords with songname like if you want to search the song Closer, you may type "Closer chainsmokers".)
+Make sure that you have active Internet Connection otherwise the script would show you "No Internet Connection" and would exit itself. If any song(s) could not be downloaded by the script it would show "Some error occured" after the song and the name of that song would be copied to failedtemp.txt (this file would be created in the folder in which you are running the script if there are any fails).
+
+h1. Disclaimer
+
+This script does not promote the downloading of copyright content. This is solely for educational purposes for learning web scrapping by python. I am not responsible for any piracy.
+
+h1. Credits
+
+Special thanks to Swayam Gagneja (swayamgagneja12345@gmail.com) for providing base for spotify playlist file to which I made subsequent changes and linked to main file.
