@@ -18,7 +18,7 @@ For windows, download the release-essential build from "here":https://www.gyan.d
 On Debian based GNU/Linux distros, use @sudo apt install ffmpeg@
 On RedHat based GNU/Linux distros, use @sudo dnf install ffmpeg@
 On Arch based GNU/Linux distros, use @sudo pacman -S ffmpeg@
-On Alpine Linux, use @sudo apt add ffmpeg@
+On Alpine Linux, use @sudo apk add ffmpeg@
 On Termux, use @pkg install ffmpeg@ on updated Termux (dont use Play Store version as it is not updated there now, download from "Termux on F-droid":http://f-droid.org/en/packages/com.termux/
 
 *Note:* The script requires Python3 and is not supported for Python2
