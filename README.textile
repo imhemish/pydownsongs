@@ -1,5 +1,7 @@
 h1. pydownsongs
 
+<The project is abandoned and is full of bugs and many a things are not implemented like a download counter>
+
 Pydownsongs is intended for both developers and regular users to download songs
 
 h1. Installation
